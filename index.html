@@ -568,8 +568,8 @@ var treeData = [
                             { id: "sg-troubleshoot", label: "排查：外网不通先查安全组，再看内部 <code>firewall-cmd</code>。" },
                             { id: "sg-rules", label: "安全组规则：支持 CIDR 地址段，支持协议+端口，支持策略（允许/拒绝）。" },
                             { id: "sg-why", label: "⚙️ <strong>为什么安全组先于 iptables？</strong> 安全组是云平台的分布式防火墙，在流量进入虚拟机网卡之前过滤；iptables 是虚拟机内部 OS 的防火墙。流量路径：外部 → 安全组 → 虚拟机 → iptables。" },
-                            { id: "sg-vs-nacl", label: "🔄 <strong>Security Group vs Network ACL</strong>：SG 是实例级有状态防火墙（仅允许），NACL 是子网级无状态防火墙（允许/拒绝，按顺序评估）。" },
-                            { id: "ec2-comm", label: "📡 <strong>EC2 通信问题</strong>：先检查 SG 入站规则，再查 NACL，然后看路由表，最后用 <code>tcpdump</code> 抓包确认。" },
+                            { id: "sg-vs-nacl", label: "🔄 <strong>Security Group vs Network ACL</strong>：SG 是实例级有状态防火墙（允许了出站流量，自动允许该连接的回程流量），NACL 是子网级无状态防火墙（允许/拒绝，按顺序评估（入站/出站规则必须分别配置））。" },
+                            { id: "ec2-comm", label: "📡 <strong>EC2 通信问题</strong>：SG 层：先检查 SG 入站规则，再查NACL; NACL层:确认入站/出站规则无 Deny ; 然后看路由表:VPC Peering 或 Direct Connect配置; 最后用 <code>tcpdump</code> 抓包确认。" },
                             // A4, A5 深究
                             {
                                 id: "a4-deep",
