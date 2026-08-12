@@ -590,6 +590,34 @@ var treeData = [
                             }
                         ]
                     },
+					{
+						id: "clb-why",
+						label: "⚖️ 为什么 LB 对高可用重要？",
+						children: [
+							{ id: "clb-health", label: "核心差异：<span class=\"hl\">主动健康检查</span>。CLB 主动发 <code>TCP SYN</code> 或 <code>HTTP GET</code> 探测后端，失败则自动摘除。<br>Nginx 默认被动（有人访问才探测）。" },
+							{ id: "clb-listener", label: "监听器：支持 TCP/UDP/HTTP/HTTPS，可配置调度算法（轮询、加权最小连接数等）。" },
+							{ id: "clb-session", label: "会话保持：基于IP或Cookie，保证同一用户落同一后端。" },
+							{
+								id: "clb-why",
+								label: "⚖️ 为什么 LB 对高可用重要？",
+								children: [
+									{ id: "clb-why-1", label: "<strong>Traffic distribution</strong>：将请求分发到多个后端，避免单点过载。" },
+									{ id: "clb-why-2", label: "<strong>High availability</strong>：通过健康检查自动剔除故障后端，保证服务持续可用。" },
+									{ id: "clb-why-3", label: "<strong>Failover</strong>：当后端故障时，LB 自动将流量切换到健康节点，实现故障转移。" },
+									{ id: "clb-why-4", label: "<strong>Scalability</strong>：支持水平扩展，新增后端无需修改客户端，只需加入 LB 后端池。" },
+									{
+										id: "clb-why-deep",
+										label: "🧠 面试官深究 · Q8",
+										children: [
+											{ id: "clb-why-d1", label: "<strong>四层 vs 七层 LB 的区别：</strong> 四层（LVS）基于 IP+端口，效率高，不支持 HTTP 路由；七层（Nginx/HAProxy）可解析 HTTP 头部，支持路由和重写。追问：为什么七层 LB 通常作为四层 LB 的后端？答：四层 LB 负责分发流量到多个七层 LB，实现高可用和横向扩展。" },
+											{ id: "clb-why-d2", label: "<strong>会话保持（Session Affinity）实现方式：</strong> 基于 cookie 或源 IP 哈希。但源 IP 哈希在 NAT 环境下可能不均匀。追问：如果你使用云 CLB，如何开启会话保持？答：在监听器配置中启用。" },
+											{ id: "clb-why-d3", label: "<strong>健康检查的最佳实践：</strong> 检查路径应简单（如 /health），返回 200；检查间隔不宜过短（避免流量冲击）。追问：如果健康检查被误判（应用正常但 LB 认为不健康），如何调试？答：检查 LB 探测源 IP 是否被安全组拦截，及后端防火墙是否允许。" }
+										]
+									}
+								]
+							}
+						]
+					},
                     // 其他云产品...
                 ]
             },
