@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRE 面试备战 · 知识树 + 术语字典</title>
+    <title>SRE 面试备战 · 黑版</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
-            background: #f1f5f9;
-            color: #0f172a;
+            background: #0b0e14;
+            color: #e8edf5;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -17,21 +17,31 @@
         .container {
             max-width: 1300px;
             width: 100%;
-            background: white;
+            background: #141a24;
             border-radius: 28px;
             padding: 28px 24px;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.7);
+            border: 1px solid #2a3344;
         }
-        h1 { font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
-        .subtitle { color: #475569; font-size: 14px; border-bottom: 2px solid #e2e8f0; padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; }
-        .badge { background: #dbeafe; color: #1e40af; padding: 4px 14px; border-radius: 30px; font-size: 13px; font-weight: 600; }
+        h1 { font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px; color: #f0f4ff; }
+        .subtitle {
+            color: #9aa8b9;
+            font-size: 14px;
+            border-bottom: 2px solid #2a3344;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .badge { background: #1a2a4a; color: #7aa9ff; padding: 4px 14px; border-radius: 30px; font-size: 13px; font-weight: 600; }
 
         .toolbar {
-            background: #f8fafc;
+            background: #1f2836;
             border-radius: 16px;
             padding: 16px 20px;
             margin-bottom: 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #2f3a4a;
         }
         .toolbar .search-area {
             display: flex;
@@ -43,16 +53,19 @@
             flex: 1;
             min-width: 200px;
             padding: 10px 16px;
-            border: 1px solid #d1d9e6;
+            border: 1px solid #3a465a;
             border-radius: 30px;
             font-size: 15px;
             outline: none;
+            background: #0f141e;
+            color: #e8edf5;
             transition: 0.2s;
         }
-        .toolbar .search-area input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px #bfdbfe; }
+        .toolbar .search-area input:focus { border-color: #5b8cff; box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.3); }
+        .toolbar .search-area input::placeholder { color: #6a7a8e; }
         .toolbar .search-area button {
             padding: 10px 24px;
-            background: #3b82f6;
+            background: #2a5aff;
             color: white;
             border: none;
             border-radius: 30px;
@@ -60,8 +73,9 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .toolbar .search-area button:hover { background: #2563eb; }
-        .toolbar .search-area button.clear { background: #e2e8f0; color: #1e293b; }
+        .toolbar .search-area button:hover { background: #1a4ae0; }
+        .toolbar .search-area button.clear { background: #3a465a; color: #c0cbd8; }
+        .toolbar .search-area button.clear:hover { background: #4a5a70; }
         .toolbar .quick-links {
             display: flex;
             flex-wrap: wrap;
@@ -70,42 +84,44 @@
         }
         .toolbar .quick-links a {
             font-size: 13px;
-            color: #1e40af;
-            background: #e0e7ff;
+            color: #b0c4ff;
+            background: #1a2a4a;
             padding: 4px 14px;
             border-radius: 20px;
             text-decoration: none;
             cursor: pointer;
             transition: 0.15s;
             white-space: nowrap;
+            border: 1px solid #2f4a7a;
         }
-        .toolbar .quick-links a:hover { background: #bfdbfe; }
+        .toolbar .quick-links a:hover { background: #2a4a7a; border-color: #5b8cff; }
         .toolbar .result-info {
             font-size: 13px;
-            color: #475569;
+            color: #9aa8b9;
             margin-top: 8px;
             display: none;
         }
         .toolbar .result-info.show { display: block; }
 
-        /* 术语字典表格区域 */
+        /* 术语字典 */
         .term-dict {
             margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #2a3344;
             border-radius: 16px;
             overflow: hidden;
-            background: #fafcff;
+            background: #111a26;
         }
         .term-dict .header {
-            background: #eef2ff;
+            background: #1a2638;
             padding: 12px 20px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             user-select: none;
+            color: #d0dff0;
         }
-        .term-dict .header:hover { background: #e0e7ff; }
+        .term-dict .header:hover { background: #22324a; }
         .term-dict .body {
             max-height: 0;
             overflow: hidden;
@@ -116,29 +132,30 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            color: #dde4ef;
         }
         .term-dict th {
-            background: #f1f5f9;
+            background: #1a2638;
             text-align: left;
             padding: 10px 16px;
-            border-bottom: 2px solid #d1d9e6;
+            border-bottom: 2px solid #2a3344;
             position: sticky;
             top: 0;
-            background: #f1f5f9;
             z-index: 2;
+            color: #b0c4ff;
         }
         .term-dict td {
             padding: 8px 16px;
-            border-bottom: 1px solid #e9edf2;
+            border-bottom: 1px solid #1f2a3a;
             vertical-align: top;
         }
-        .term-dict .category { font-weight: 600; color: #2563eb; width: 80px; }
-        .term-dict .term { font-weight: 600; color: #0f172a; width: 150px; }
-        .term-dict .explanation { color: #334155; }
+        .term-dict .category { font-weight: 600; color: #7aa9ff; width: 80px; }
+        .term-dict .term { font-weight: 600; color: #e0e8f0; width: 150px; }
+        .term-dict .explanation { color: #bcc8d8; }
 
-        /* 树样式 */
+        /* 树 */
         .tree { padding-left: 0; list-style: none; }
-        .tree ul { padding-left: 26px; list-style: none; border-left: 2px solid #d1d9e6; margin-left: 6px; }
+        .tree ul { padding-left: 26px; list-style: none; border-left: 2px solid #2a3344; margin-left: 6px; }
         .tree li { position: relative; margin: 4px 0; }
         .node {
             display: flex;
@@ -149,13 +166,13 @@
             cursor: pointer;
             transition: background 0.15s;
         }
-        .node:hover { background: #f8fafc; }
+        .node:hover { background: #1f2a3a; }
         .node .toggle {
             display: inline-block;
             width: 22px;
             text-align: center;
             font-size: 13px;
-            color: #64748b;
+            color: #8a9ab0;
             flex-shrink: 0;
             margin-top: 3px;
             user-select: none;
@@ -165,26 +182,40 @@
             font-size: 15px;
             line-height: 1.7;
             word-break: break-word;
+            color: #e0e8f0;
         }
-        .node .label .tag { display: inline-block; background: #e2e8f0; padding: 0 10px; border-radius: 12px; font-size: 11px; font-weight: 600; color: #475569; margin-left: 8px; }
-        .node .label code { background: #f1f5f9; padding: 2px 10px; border-radius: 6px; font-size: 13px; font-family: monospace; border: 1px solid #e2e8f0; }
-        .node .label .cmd { display: inline-block; background: #0f172a; color: #e2e8f0; padding: 2px 12px; border-radius: 6px; font-size: 13px; font-family: monospace; margin: 2px 0; border: 1px solid #334155; }
-        .node .label .hl { background: #fef9c3; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
-        .node .label .warn { background: #fee2e2; color: #991b1b; padding: 1px 8px; border-radius: 4px; font-size: 13px; }
+        .node .label .tag { display: inline-block; background: #2a3344; padding: 0 10px; border-radius: 12px; font-size: 11px; font-weight: 600; color: #9aa8b9; margin-left: 8px; }
+        .node .label code { background: #1a2638; padding: 2px 10px; border-radius: 6px; font-size: 13px; font-family: monospace; border: 1px solid #2a3344; color: #c0d0e0; }
+        .node .label .cmd { display: inline-block; background: #0b0e14; color: #d0dff0; padding: 2px 12px; border-radius: 6px; font-size: 13px; font-family: monospace; margin: 2px 0; border: 1px solid #2a3344; }
+        .node .label .hl { background: #3a4a2a; padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #b0e070; }
+        .node .label .warn { background: #4a2a2a; color: #f07070; padding: 1px 8px; border-radius: 4px; font-size: 13px; }
         .children { overflow: hidden; transition: max-height 0.3s ease; max-height: 0; }
         .children.open { max-height: 100000px; }
         .leaf .node { cursor: default; }
         .leaf .node:hover { background: transparent; }
         .leaf .node .toggle { visibility: hidden; }
-        .highlight-node { background: #fef9c3 !important; border-radius: 8px; }
+        .highlight-node { background: #2a4a3a !important; border-radius: 8px; }
 
-        .footer { margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 18px; font-size: 13px; color: #94a3b8; text-align: center; }
-        .breadcrumb { font-size: 13px; color: #64748b; margin: 8px 0 16px 0; padding: 8px 12px; background: #f8fafc; border-radius: 30px; display: inline-block; }
+        .footer { margin-top: 32px; border-top: 1px solid #2a3344; padding-top: 18px; font-size: 13px; color: #6a7a8e; text-align: center; }
+        .breadcrumb { font-size: 13px; color: #8a9ab0; margin: 8px 0 16px 0; padding: 8px 12px; background: #1f2836; border-radius: 30px; display: inline-block; }
+
+        /* 收起全部按钮 */
+        .collapse-all-btn {
+            background: #3a465a;
+            color: #e0e8f0;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .collapse-all-btn:hover { background: #4a5a70; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🌳 SRE 面试备战 · 知识树 + 术语字典</h1>
+    <h1>🌙 SRE 面试备战 · 黑版</h1>
     <div class="subtitle">
         <span>点击 ▶ 展开知识点 · 搜索 · 快捷定位面试题</span>
         <span class="badge">腾讯游戏运维 · 技术一面</span>
@@ -196,20 +227,39 @@
             <input type="text" id="searchInput" placeholder="搜索知识点（如 load average, pod, 安全组）" />
             <button id="searchBtn">🔍 搜索</button>
             <button class="clear" id="clearBtn">✕ 清空</button>
+            <button class="collapse-all-btn" id="collapseAllBtn">📁 收起全部</button>
         </div>
-        <div class="quick-links">
-            <!-- 针对面试问题的快捷链接 -->
-            <a data-target="linux-slow">🐧 Linux 缓慢排查</a>
-            <a data-target="pod-crash">🧩 Pod CrashLoopBackOff</a>
-            <a data-target="dns-issue">🌐 域名无法访问</a>
-            <a data-target="cpu-high">🔥 CPU 95% 处理</a>
-            <a data-target="api-timeout">⏱️ API 超时情境</a>
+        <div class="quick-links" id="quickLinks">
+            <!-- 9个基础问题 -->
+            <a data-target="q1">Q1 服务器变慢</a>
+            <a data-target="q2">Q2 Pod CrashLoopBackOff</a>
+            <a data-target="q3">Q3 资源对象区别</a>
+            <a data-target="q4">Q4 Shell 检查 nginx</a>
+            <a data-target="q5">Q5 域名无法访问</a>
+            <a data-target="q6">Q6 TCP vs UDP</a>
+            <a data-target="q7">Q7 CPU 95%</a>
+            <a data-target="q8">Q8 负载均衡器</a>
+            <a data-target="q9">Q9 业务无法访问前30分钟</a>
+            <!-- 10个附加 -->
+            <a data-target="a1">A1 Deployment vs StatefulSet</a>
+            <a data-target="a2">A2 Ingress vs LoadBalancer</a>
+            <a data-target="a3">A3 Pod Pending</a>
+            <a data-target="a4">A4 SG vs NACL</a>
+            <a data-target="a5">A5 EC2 通信问题</a>
+            <a data-target="a6">A6 云部署经验</a>
+            <a data-target="a7">A7 LoadAvg vs CPU</a>
+            <a data-target="a8">A8 服务启动日志</a>
+            <a data-target="a9">A9 K8s 监控指标</a>
+            <a data-target="a10">A10 告警疲劳</a>
+            <!-- 情境题 -->
+            <a data-target="scenario">⏱️ API 超时情境</a>
+            <!-- 术语字典 -->
             <a data-target="dictionary">📚 术语字典</a>
         </div>
         <div id="resultInfo" class="result-info"></div>
     </div>
 
-    <!-- 术语字典表格（默认收起） -->
+    <!-- 术语字典 -->
     <div class="term-dict" id="termDict">
         <div class="header" onclick="toggleDict()">
             <span>📘 排障术语速查表（点击展开/收起）</span>
@@ -233,10 +283,9 @@
 
 <script>
 // ============================================================
-// 1. 术语字典数据
+// 1. 术语字典数据（保持不变）
 // ============================================================
 var dictData = [
-    // Linux 指标
     { term: "%wa", category: "Linux", explanation: "CPU 等待 I/O 的时间占比。>10% 表示磁盘或网络 I/O 瓶颈。" },
     { term: "%id", category: "Linux", explanation: "CPU 空闲率。若低且 %us 高则 CPU 繁忙；若低且 %wa 高则 I/O 慢。" },
     { term: "%us", category: "Linux", explanation: "用户态 CPU 占用（应用程序逻辑）。" },
@@ -259,7 +308,6 @@ var dictData = [
     { term: "限流 (rate limit)", category: "Linux", explanation: "限制单位时间内的请求量，防止服务过载。Nginx limit_req / Sentinel 实现。" },
     { term: "熔断 (circuit breaker)", category: "Linux", explanation: "当错误率或延迟超过阈值，自动拒绝请求，防止级联故障。Hystrix / Resilience4j。" },
     { term: "自动弹性伸缩 (HPA)", category: "K8s", explanation: "Horizontal Pod Autoscaler，根据 CPU/内存或自定义指标自动调整 Pod 副本数。" },
-    // K8s 术语
     { term: "ConfigMap / Secret", category: "K8s", explanation: "ConfigMap 存储非敏感配置；Secret 存储敏感信息（密码、证书），编码为 base64。" },
     { term: "requests / limits", category: "K8s", explanation: "requests 为调度预留资源；limits 为容器最大可用资源。过低的 limits 会导致 OOMKilled。" },
     { term: "扩容节点", category: "K8s", explanation: "当节点资源不足时，增加 Node 数量（云上 Cluster Autoscaler 或手动添加 CVM）。" },
@@ -271,10 +319,9 @@ var dictData = [
 ];
 
 // ============================================================
-// 2. 树数据（增强版：增加 K8s 排障分支 + 原理深挖节点）
+// 2. 树数据（增加新节点以匹配所有问题）
 // ============================================================
 var treeData = [
-    // 术语字典不放在树中，单独展示，所以树数据不再包含字典
     {
         id: "linux-root",
         label: "🐧 Linux 系统运维与排障",
@@ -296,8 +343,8 @@ var treeData = [
                             { id: "top-decision", label: "决策树：%wa高 → 看磁盘；%sy高且%id低 → 内核忙，切 <code>vmstat</code> 看上下文切换。" },
                             { id: "top-interact", label: "交互快捷键：<code>P</code> 按CPU排序，<code>M</code> 按内存，<code>k</code> 杀进程，<code>r</code> 调整nice。" },
                             { id: "top-cmd", label: "实战：<code>top -c</code> 显示完整命令行，<code>top -u user</code> 只看某用户。" },
-                            // 原理深挖
-                            { id: "top-load-why", label: "⚙️ <strong>为什么 load average 包含 D 状态？</strong> D 状态进程处于不可中断睡眠（等待 I/O），它们虽未占用 CPU，但仍计入系统负载，因为系统无法处理更多请求，直到 I/O 完成。" }
+                            { id: "top-load-why", label: "⚙️ <strong>为什么 load average 包含 D 状态？</strong> D 状态进程处于不可中断睡眠（等待 I/O），它们虽未占用 CPU，但仍计入系统负载，因为系统无法处理更多请求，直到 I/O 完成。" },
+                            { id: "top-cpu-high", label: "🔥 <strong>CPU 95% 处理思路</strong>：先 top 定位进程，若 %us 高则检查代码/GC，若 %sy 高则查 vmstat 看上下文切换。" }
                         ]
                     },
                     {
@@ -342,17 +389,42 @@ var treeData = [
                 ]
             },
             {
+                id: "network-dns",
+                label: "🌍 网络与 DNS 专项",
+                children: [
+                    {
+                        id: "dns-issue",
+                        label: "🔍 域名无法访问（IP 可通）排查",
+                        children: [
+                            { id: "dns-dig", label: "1. <code>dig domain</code> 或 <code>nslookup</code> 检查解析是否返回正确 IP。" },
+                            { id: "dns-ping", label: "2. <code>ping domain</code> 看是否解析失败。" },
+                            { id: "dns-hosts", label: "3. 检查 <code>/etc/hosts</code> 是否有错误条目。" },
+                            { id: "dns-cache", label: "4. 清除本地 DNS 缓存（<code>systemd-resolve --flush-caches</code>）。" },
+                            { id: "dns-ttl", label: "5. 若使用云服务，检查 DNS 记录和 TTL。" }
+                        ]
+                    },
+                    {
+                        id: "tcp-udp",
+                        label: "⚖️ TCP vs UDP 区别与场景",
+                        children: [
+                            { id: "tcp", label: "<strong>TCP</strong>：面向连接、可靠传输、有重传。场景：HTTP/HTTPS, SSH, 数据库。" },
+                            { id: "udp", label: "<strong>UDP</strong>：无连接、不可靠、速度快。场景：DNS, 视频直播, 游戏实时通信, SNMP。" }
+                        ]
+                    }
+                ]
+            },
+            {
                 id: "filesystem",
                 label: "2. 文件系统与存储",
                 children: [
                     {
                         id: "inode",
-                        label: "📁 Inode 原理（数据的户口本）",
+                        label: "📁 Inode 原理",
                         children: [
                             { id: "inode-basic", label: "文件名 = 标签；数据实体 = Inode（记录大小/权限/物理块位置）。" },
                             { id: "inode-rm", label: "<code>rm</code> 操作：撕掉目录中的文件名标签，Inode 引用计数 -1。" },
                             { id: "inode-hardlink", label: "<strong>硬链接</strong>：同一个 Inode 贴多个标签。不能跨分区，不能指向目录。删除源文件，数据仍在（引用计数 >0）。" },
-                            { id: "inode-softlink", label: "<strong>软链接</strong>：新建 Inode，内容存“源文件路径”。可跨分区，可指目录。删除源文件即断链（<span class=\"hl\">生产环境首选</span>）。" },
+                            { id: "inode-softlink", label: "<strong>软链接</strong>：新建 Inode，内容存“源文件路径”。可跨分区，可指目录。删除源文件即断链。" },
                             { id: "inode-cmd", label: "命令：<code>ln</code> 硬链接，<code>ln -s</code> 软链接。查看inode：<code>ls -li</code>。" }
                         ]
                     },
@@ -419,6 +491,14 @@ var treeData = [
                         ]
                     },
                     {
+                        id: "shell-nginx-check",
+                        label: "📄 脚本：检查 nginx 是否运行",
+                        children: [
+                            { id: "shell-nginx-code", label: "代码：<code>if pgrep -x \"nginx\" > /dev/null; then echo 'running'; else echo 'not running'; fi</code>" },
+                            { id: "shell-nginx-systemd", label: "也可用 <code>systemctl is-active nginx</code>。" }
+                        ]
+                    },
+                    {
                         id: "shell-batch",
                         label: "🔄 批量操作与权限",
                         children: [
@@ -441,7 +521,7 @@ var treeData = [
             },
             {
                 id: "log-analysis",
-                label: "5. 日志分析与文本处理（三板斧）",
+                label: "5. 日志分析与文本处理",
                 children: [
                     {
                         id: "log-awk",
@@ -461,9 +541,20 @@ var treeData = [
                             { id: "log-sed", label: "<code>sed -i 's/old/new/g' file</code>：直接修改文件。" },
                             { id: "log-grep-c", label: "<code>grep -c</code>：只输出匹配行数（<code>grep</code> 不加则输出具体行）。" },
                             { id: "log-grep-multi", label: "多文件检索：<code>grep \"ERROR\" log*.txt > all_errors.txt</code>" },
-                            { id: "log-grep-time", label: "时间过滤：先 <code>date --date='15 min ago'</code> 取时间戳，再 <code>grep</code> 比对。" }
+                            { id: "log-grep-time", label: "时间过滤：先 <code>date --date='15 min ago'</code> 取时间戳，再 <code>grep</code> 比对。" },
+                            { id: "log-startup", label: "🔍 <strong>服务启动失败日志</strong>：通常查看 <code>/var/log/messages</code>, <code>/var/log/syslog</code>, <code>journalctl -xe</code> 以及应用自身日志。" }
                         ]
                     }
+                ]
+            },
+            // 新增：Load Average vs CPU Utilization
+            {
+                id: "load-vs-cpu",
+                label: "📊 Load Average vs CPU Utilization",
+                children: [
+                    { id: "load-def", label: "<strong>Load Average</strong>：单位时间内处于运行队列或不可中断睡眠（D）的进程平均数，反映系统整体拥堵程度。" },
+                    { id: "cpu-def", label: "<strong>CPU Utilization</strong>：CPU 实际执行指令的时间百分比（%us + %sy + %ni）。" },
+                    { id: "load-vs-cpu-diff", label: "关键区别：Load 高但 CPU 低 → 大量进程等待 I/O（D 状态）；CPU 高但 Load 低 → 计算密集型任务。" }
                 ]
             }
         ]
@@ -492,7 +583,8 @@ var treeData = [
                         children: [
                             { id: "cvm-bash", label: "进去就是 <code>bash</code>，一切 Linux 命令通用。" },
                             { id: "cvm-instance", label: "实例类型：标准型、计算型、内存型、GPU型等。" },
-                            { id: "cvm-image", label: "镜像：可选用 CentOS, Ubuntu, Windows 等。" }
+                            { id: "cvm-image", label: "镜像：可选用 CentOS, Ubuntu, Windows 等。" },
+                            { id: "cvm-deploy", label: "🛠️ <strong>云部署经验</strong>：使用 Terraform 定义 VPC/子网/安全组，部署 CVM + CDB，配置 CLB 和 Auto Scaling，集成 CI/CD。" }
                         ]
                     },
                     {
@@ -503,7 +595,9 @@ var treeData = [
                             { id: "sg-analogy", label: "类比 = 机房的<strong>硬件防火墙</strong>（小区大门）。" },
                             { id: "sg-troubleshoot", label: "排查：外网不通先查安全组，再看内部 <code>firewall-cmd</code>。" },
                             { id: "sg-rules", label: "安全组规则：支持 CIDR 地址段，支持协议+端口，支持策略（允许/拒绝）。" },
-                            { id: "sg-why", label: "⚙️ <strong>为什么安全组先于 iptables？</strong> 安全组是云平台的分布式防火墙，在流量进入虚拟机网卡之前过滤；iptables 是虚拟机内部 OS 的防火墙。流量路径：外部 → 安全组 → 虚拟机 → iptables。" }
+                            { id: "sg-why", label: "⚙️ <strong>为什么安全组先于 iptables？</strong> 安全组是云平台的分布式防火墙，在流量进入虚拟机网卡之前过滤；iptables 是虚拟机内部 OS 的防火墙。流量路径：外部 → 安全组 → 虚拟机 → iptables。" },
+                            { id: "sg-vs-nacl", label: "🔄 <strong>Security Group vs Network ACL</strong>：SG 是实例级有状态防火墙（仅允许），NACL 是子网级无状态防火墙（允许/拒绝，按顺序评估）。" },
+                            { id: "ec2-comm", label: "📡 <strong>EC2 通信问题</strong>：先检查 SG 入站规则，再查 NACL，然后看路由表，最后用 <code>tcpdump</code> 抓包确认。" }
                         ]
                     },
                     {
@@ -521,7 +615,8 @@ var treeData = [
                         children: [
                             { id: "clb-health", label: "核心差异：<span class=\"hl\">主动健康检查</span>。CLB 主动发 <code>TCP SYN</code> 或 <code>HTTP GET</code> 探测后端，失败则自动摘除。<br>Nginx 默认被动（有人访问才探测）。" },
                             { id: "clb-listener", label: "监听器：支持 TCP/UDP/HTTP/HTTPS，可配置调度算法（轮询、加权最小连接数等）。" },
-                            { id: "clb-session", label: "会话保持：基于IP或Cookie，保证同一用户落同一后端。" }
+                            { id: "clb-session", label: "会话保持：基于IP或Cookie，保证同一用户落同一后端。" },
+                            { id: "clb-why", label: "✅ <strong>为什么 LB 对高可用重要？</strong> 消除单点故障，支持水平扩展，实现故障转移和流量分发。" }
                         ]
                     },
                     {
@@ -569,16 +664,29 @@ var treeData = [
                         ]
                     },
                     {
-                        id: "gray-release",
-                        label: "🔄 灰度发布策略（必考）",
+                        id: "k8s-resources",
+                        label: "🧩 Kubernetes 资源对象区别",
                         children: [
-                            { id: "gray-flow", label: "流程：1% 金丝雀 → 观察 <code>si/so</code>、<code>%util</code>、业务错误率（10分钟） → 10% → 全量。" },
-                            { id: "gray-rule", label: "铁律：<span class=\"hl\">先切流（CLB摘除），再重启/变更</span>，避免影响玩家。" },
-                            { id: "gray-rollback", label: "回滚预案：<code>at now + 10min</code> 执行恢复脚本，或 Ansible 批量回滚。" },
-                            { id: "gray-k8s", label: "K8s 滚动更新：<code>kubectl set image deployment/xxx new-image=... && kubectl rollout status deployment/xxx</code>" }
+                            { id: "pod-def", label: "<strong>Pod</strong>：最小部署单元，含一个或多个容器，共享网络/存储。" },
+                            { id: "deployment-def", label: "<strong>Deployment</strong>：管理无状态应用 Pod 的副本数、滚动更新、回滚。" },
+                            { id: "service-def", label: "<strong>Service</strong>：为 Pod 提供稳定访问入口（ClusterIP），实现服务发现和内部负载均衡。" },
+                            { id: "ingress-def", label: "<strong>Ingress</strong>：七层（HTTP/HTTPS）路由，根据域名/路径转发外部流量到 Service。" }
                         ]
                     },
-                    // 新增 K8s 排障分支
+                    {
+                        id: "deploy-vs-statefulset",
+                        label: "📌 Deployment vs StatefulSet",
+                        children: [
+                            { id: "deploy-vs-ss-diff", label: "<strong>Deployment</strong>：无状态，Pod 可互换，支持滚动更新。<br><strong>StatefulSet</strong>：有状态，Pod 有唯一标识和稳定存储，有序部署/扩容，适用于数据库、MQ。" }
+                        ]
+                    },
+                    {
+                        id: "ingress-vs-lb",
+                        label: "📌 Ingress vs LoadBalancer Service",
+                        children: [
+                            { id: "ingress-vs-lb-diff", label: "<strong>Ingress</strong>：七层路由，根据域名/路径转发，节省公网 IP。<br><strong>LoadBalancer Service</strong>：四层 LB，每个 Service 独立公网 IP，成本高。" }
+                        ]
+                    },
                     {
                         id: "k8s-troubleshoot",
                         label: "🧩 Kubernetes 排障专项",
@@ -604,30 +712,24 @@ var treeData = [
                                     { id: "pod-pending-taint", label: "3. 节点污点（Taint）不容忍 → 添加 toleration。" },
                                     { id: "pod-pending-pvc", label: "4. PVC 无法绑定 → 检查 StorageClass 或 PV。" }
                                 ]
-                            },
-                            {
-                                id: "deploy-vs-statefulset",
-                                label: "Deployment vs StatefulSet",
-                                children: [
-                                    { id: "deploy", label: "<strong>Deployment</strong>：无状态应用，Pod 可互换，支持滚动更新、回滚。" },
-                                    { id: "statefulset", label: "<strong>StatefulSet</strong>：有状态应用（数据库、MQ），Pod 有唯一标识和稳定存储，有序部署/扩容。" }
-                                ]
-                            },
-                            {
-                                id: "ingress-vs-lb",
-                                label: "Ingress vs LoadBalancer Service",
-                                children: [
-                                    { id: "ingress", label: "Ingress：七层（HTTP/HTTPS）路由，根据域名/路径转发，节省公网 IP。" },
-                                    { id: "lb", label: "LoadBalancer Service：四层 LB，每个 Service 独立公网 IP，成本高。" }
-                                ]
                             }
+                        ]
+                    },
+                    {
+                        id: "gray-release",
+                        label: "🔄 灰度发布策略",
+                        children: [
+                            { id: "gray-flow", label: "流程：1% 金丝雀 → 观察 <code>si/so</code>、<code>%util</code>、业务错误率（10分钟） → 10% → 全量。" },
+                            { id: "gray-rule", label: "铁律：<span class=\"hl\">先切流（CLB摘除），再重启/变更</span>，避免影响玩家。" },
+                            { id: "gray-rollback", label: "回滚预案：<code>at now + 10min</code> 执行恢复脚本，或 Ansible 批量回滚。" },
+                            { id: "gray-k8s", label: "K8s 滚动更新：<code>kubectl set image deployment/xxx new-image=... && kubectl rollout status deployment/xxx</code>" }
                         ]
                     }
                 ]
             },
             {
                 id: "high-concurrency",
-                label: "4. 高并发架构与排障（游戏/社交）",
+                label: "4. 高并发架构与排障",
                 children: [
                     {
                         id: "cache-issues",
@@ -658,6 +760,59 @@ var treeData = [
                             { id: "dont-just-top", label: "切忌只看 <code>top</code>！<br>例：即使CPU只有10%，若 <code>Recv-Q</code> 堆积，玩家照样卡。" }
                         ]
                     }
+                ]
+            },
+            // 情境题
+            {
+                id: "scenario",
+                label: "⏱️ 情境题：API 响应时间从 100ms 升至 5 秒",
+                children: [
+                    { id: "scenario-1", label: "1. 确认影响范围：查看错误率、请求量、上下游依赖。" },
+                    { id: "scenario-2", label: "2. 快速止血：从 LB 摘除异常节点或重启。" },
+                    { id: "scenario-3", label: "3. 定位根因：应用层（jstack）、网络层（ss）、磁盘层（iostat）、系统层（vmstat/dmesg）。" },
+                    { id: "scenario-4", label: "4. 解决：加索引、扩容连接池、修复内存泄漏等。" },
+                    { id: "scenario-5", label: "5. 恢复与通知，准备 Post-Mortem。" },
+                    { id: "scenario-prevent", label: "🛡️ 预防：增加缓存、慢查询监控、熔断降级、定期压测。" }
+                ]
+            },
+            {
+                id: "monitoring",
+                label: "📊 监控与告警专项",
+                children: [
+                    {
+                        id: "k8s-metrics",
+                        label: "📈 K8s 集群监控关键指标",
+                        children: [
+                            { id: "k8s-metrics-node", label: "节点：CPU/内存使用率、磁盘 I/O、网络流量。" },
+                            { id: "k8s-metrics-pod", label: "Pod：重启次数、OOM 计数、资源使用率。" },
+                            { id: "k8s-metrics-api", label: "API Server：请求延迟、错误率。" },
+                            { id: "k8s-metrics-scheduler", label: "Scheduler：调度失败次数。" },
+                            { id: "k8s-metrics-etcd", label: "Etcd：Leader 状态、存储容量。" }
+                        ]
+                    },
+                    {
+                        id: "alert-fatigue",
+                        label: "🚨 告警疲劳（Alert Fatigue）",
+                        children: [
+                            { id: "alert-fatigue-def", label: "大量无效告警导致运维麻木。" },
+                            { id: "alert-fatigue-solution", label: "解决方法：分级告警（P0/P1/P2）、聚合（Alertmanager）、基于 SLO 设计告警阈值。" }
+                        ]
+                    }
+                ]
+            },
+            // 业务系统无法访问前30分钟
+            {
+                id: "outage-30min",
+                label: "🚨 业务系统无法访问 · 前30分钟行动",
+                children: [
+                    { id: "outage-1", label: "1. 确认事故（Acknowledge incident）并通知团队。" },
+                    { id: "outage-2", label: "2. 查监控面板（Zabbix/Prometheus）确认影响范围。" },
+                    { id: "outage-3", label: "3. 检查基础设施健康（CVM/CLB/CDB 状态）。" },
+                    { id: "outage-4", label: "4. 查看应用/系统日志（journalctl, 业务日志）。" },
+                    { id: "outage-5", label: "5. 根据初步判断快速恢复（重启、切流、扩容）。" },
+                    { id: "outage-6", label: "6. 通知相关方（Notify stakeholders）。" },
+                    { id: "outage-7", label: "7. 若无法快速恢复，升级（Escalate）到二线。" },
+                    { id: "outage-8", label: "8. 恢复后记录时间线，准备 RCA（Root Cause Analysis）。" }
                 ]
             }
         ]
@@ -719,9 +874,33 @@ function renderTree(data, parentUl, parentIds) {
     });
 }
 
-function expandToNode(nodeId) {
+// 折叠所有节点（除了当前路径）
+function collapseAllExcept(pathIds) {
+    // 遍历所有节点，将其 children 折叠
+    for (var id in nodeMap) {
+        var li = nodeMap[id];
+        var childUl = li.querySelector("ul.children");
+        if (childUl) {
+            var shouldKeepOpen = (pathIds && pathIds.indexOf(id) !== -1);
+            if (!shouldKeepOpen) {
+                childUl.classList.remove("open");
+                var toggle = li.querySelector(".node .toggle");
+                if (toggle) toggle.textContent = "▶";
+            }
+        }
+    }
+}
+
+// 展开目标节点（并折叠其他）
+function expandToNode(nodeId, collapseOthers) {
     var path = nodePath[nodeId];
     if (!path) return false;
+
+    if (collapseOthers !== false) {
+        collapseAllExcept(path);
+    }
+
+    // 展开路径
     path.forEach(function(id) {
         var li = nodeMap[id];
         if (!li) return;
@@ -732,6 +911,7 @@ function expandToNode(nodeId) {
             if (toggle) toggle.textContent = "▼";
         }
     });
+
     var targetLi = nodeMap[nodeId];
     if (targetLi) {
         targetLi.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -743,6 +923,7 @@ function expandToNode(nodeId) {
     return true;
 }
 
+// 搜索功能
 function searchNodes(query) {
     query = query.trim().toLowerCase();
     var resultInfo = document.getElementById("resultInfo");
@@ -765,11 +946,28 @@ function searchNodes(query) {
     }
     resultInfo.textContent = "✅ 找到 " + matches.length + " 个匹配节点，已展开第一个。";
     resultInfo.classList.add("show");
-    expandToNode(matches[0]);
+    expandToNode(matches[0], true);
+}
+
+// 折叠全部
+function collapseAll() {
+    for (var id in nodeMap) {
+        var li = nodeMap[id];
+        var childUl = li.querySelector("ul.children");
+        if (childUl) {
+            childUl.classList.remove("open");
+            var toggle = li.querySelector(".node .toggle");
+            if (toggle) toggle.textContent = "▶";
+        }
+    }
+    // 清除高亮
+    document.querySelectorAll(".highlight-node").forEach(function(el) {
+        el.classList.remove("highlight-node");
+    });
 }
 
 // ============================================================
-// 4. 术语字典表格渲染
+// 4. 术语字典
 // ============================================================
 function renderDict() {
     var tbody = document.getElementById("dictTableBody");
@@ -802,10 +1000,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (toggle) toggle.textContent = "▼";
     });
 
-    // 渲染术语字典
     renderDict();
 
-    // 搜索事件
+    // 搜索
     var searchInput = document.getElementById("searchInput");
     var searchBtn = document.getElementById("searchBtn");
     var clearBtn = document.getElementById("clearBtn");
@@ -826,32 +1023,49 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // 收起全部
+    document.getElementById("collapseAllBtn").addEventListener("click", collapseAll);
+
     // 快捷链接映射
     var quickMap = {
-        "linux-slow": "top",              // Linux缓慢排查 -> top
-        "pod-crash": "pod-crash",         // Pod故障 -> pod-crash
-        "dns-issue": "ss",               // 域名无法访问 -> ss (关联网络)
-        "cpu-high": "top",               // CPU高 -> top
-        "api-timeout": "latency",        // API超时 -> latency (玩家视角)
-        "dictionary": "dictionary"       // 术语字典 -> 显示表格
+        "q1": "top",               // 服务器变慢
+        "q2": "pod-crash",         // Pod CrashLoopBackOff
+        "q3": "k8s-resources",     // 资源对象区别
+        "q4": "shell-nginx-check", // Shell 检查 nginx
+        "q5": "dns-issue",         // 域名无法访问
+        "q6": "tcp-udp",           // TCP vs UDP
+        "q7": "top-cpu-high",      // CPU 95%
+        "q8": "clb",               // 负载均衡器
+        "q9": "outage-30min",      // 业务无法访问前30分钟
+        "a1": "deploy-vs-statefulset",
+        "a2": "ingress-vs-lb",
+        "a3": "pod-pending",
+        "a4": "sg-vs-nacl",
+        "a5": "ec2-comm",
+        "a6": "cvm-deploy",
+        "a7": "load-vs-cpu",
+        "a8": "log-startup",
+        "a9": "k8s-metrics",
+        "a10": "alert-fatigue",
+        "scenario": "scenario",
+        "dictionary": "dictionary"
     };
 
-    document.querySelectorAll(".quick-links a").forEach(function(link) {
+    document.querySelectorAll("#quickLinks a").forEach(function(link) {
         link.addEventListener("click", function(e) {
             e.preventDefault();
             var targetId = this.dataset.target;
             if (targetId === "dictionary") {
-                // 展开术语字典
                 var body = document.getElementById("dictBody");
                 var isOpen = body.classList.contains("open");
                 if (!isOpen) toggleDict();
-                document.getElementById("dictBody").scrollIntoView({ behavior: "smooth", block: "start" });
+                document.getElementById("termDict").scrollIntoView({ behavior: "smooth", block: "start" });
                 return;
             }
             var nodeId = quickMap[targetId];
             if (nodeId && nodeMap[nodeId]) {
-                expandToNode(nodeId);
-                searchInput.value = "🔗 快速定位: " + this.textContent;
+                expandToNode(nodeId, true); // 自动折叠其他
+                searchInput.value = "🔗 " + this.textContent;
                 document.getElementById("resultInfo").textContent = "已展开节点: " + this.textContent;
                 document.getElementById("resultInfo").classList.add("show");
             } else {
