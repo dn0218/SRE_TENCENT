@@ -742,11 +742,11 @@ var treeData = [
                 id: "scenario",
                 label: "⏱️ 情境题：API 响应时间从 100ms 升至 5 秒",
                 children: [
-                    { id: "scenario-1", label: "1. 确认影响范围：查看错误率、请求量、上下游依赖。" },
+                    { id: "scenario-1", label: "1. 确认影响范围：查看错误率（HTTP 5xx）、请求量、上下游依赖。" },
                     { id: "scenario-2", label: "2. 快速止血：从 LB 摘除异常节点或重启。" },
                     { id: "scenario-3", label: "3. 定位根因：应用层（jstack）、网络层（ss）、磁盘层（iostat）、系统层（vmstat/dmesg）。" },
-                    { id: "scenario-4", label: "4. 解决：加索引、扩容连接池、修复内存泄漏等。" },
-                    { id: "scenario-5", label: "5. 恢复与通知，准备 Post-Mortem。" },
+                    { id: "scenario-4", label: "4. 解决：数据库慢 SQL：立刻 EXPLAIN 并 加索引（CREATE INDEX）；GC 频繁：临时 kubectl scale deployment <xxx> --replicas=3 横向扩容，分摊压力；锁竞争：临时重启该服务" },
+                    { id: "scenario-5", label: "5. 恢复与通知，准备 Post-Mortem（时间线、影响范围、根本原因、改进措施）" },
                     { id: "scenario-prevent", label: "🛡️ 预防：增加缓存、慢查询监控、熔断降级、定期压测。" },
                     // 情境题深究
                     {
@@ -798,7 +798,7 @@ var treeData = [
                                 children: [
                                     { id: "a10-d1", label: "<strong>分级告警原则：</strong> P0（立即处理）、P1（15分钟响应）、P2（2小时响应）。追问：如何设计告警阈值避免抖动？答：使用“持续一段时间”+“多条件复合”（如 CPU > 80% 持续 5 分钟）。" },
                                     { id: "a10-d2", label: "<strong>告警聚合：</strong> 使用 Alertmanager 的分组、静默、抑制功能，避免风暴。追问：如何抑制已知故障的派生告警？答：设置 inhibit_rules。" },
-                                    { id: "a10-d3", label: "<strong>基于 SLO 的告警：</strong> 例如错误预算消耗 80% 时触发告警，比固定阈值更有效。" }
+                                    { id: "a10-d3", label: "<strong>基于 SLO 的告警：</strong> 例如99.9% 可用性的季度错误预算约 13 分钟，当错误时间累积超过 4 分钟。" }
                                 ]
                             }
                         ]
