@@ -713,9 +713,9 @@ var treeData = [
                                 label: "Pod Pending 排查",
                                 children: [
                                     { id: "pod-pending-desc", label: "1. <code>kubectl describe pod</code> 看 Events 原因。" },
-                                    { id: "pod-pending-resources", label: "2. 资源不足：节点 CPU/内存不够 → 扩容节点或降低 requests。" },
-                                    { id: "pod-pending-taint", label: "3. 节点污点（Taint）不容忍 → 添加 toleration。" },
-                                    { id: "pod-pending-pvc", label: "4. PVC 无法绑定 → 检查 StorageClass 或 PV。" },
+                                    { id: "pod-pending-resources", label: "2. 资源不足：事件里出现 Insufficient cpu / Insufficient memory, 节点 CPU/内存不够 → 扩容节点或降低 requests。" },
+                                    { id: "pod-pending-taint", label: "3. 节点污点（Taint）不容忍: nodeSelector 或 affinity 不匹配 →  添加 toleration。" },
+                                    { id: "pod-pending-pvc", label: "4. PVC 无法绑定 (persistentvolumeclaim <claim> not found) → 检查 StorageClass 或 PV是否就绪" },
                                     // A3 深究
                                     {
                                         id: "a3-deep",
