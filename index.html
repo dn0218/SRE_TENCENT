@@ -675,9 +675,7 @@ var treeData = [
                                 children: [
                                     { id: "a2-d1", label: "<strong>LoadBalancer Service 的成本：</strong> 每个 LB 类型的 Service 会创建独立的云 LB，费用较高。追问：如何减少成本？答：使用 Ingress 或 nginx-ingress + 一个 LoadBalancer Service 暴露多个服务。" },
                                     { id: "a2-d2", label: "<strong>Ingress 的 TLS 配置：</strong> 需要将证书放入 Secret，并在 Ingress 规则中引用。追问：如何自动获取 Let's Encrypt 证书？答：使用 cert-manager，通过 Ingress 注解自动签发。" },
-                                    { id: "a2-d3", label: "<strong>Ingress Controller 的高可用：</strong> 部署多个副本，并使用 PodAntiAffinity 分散到不同节点，或使用云 LB 作为前端。" },
-									{ id: "a2-d4", label: "<strong>“如果我有 3 个微服务，都用同一个域名但不同路径，怎么暴露？”：</strong> 用一个 Ingress，定义三条路由规则（pathType: Prefix），后端分别指向 3 个 Service。再部署一个 Ingress Controller（如 Nginx Ingress），对外用一个 LoadBalancer Service 暴露，成本最低。 },
-									{ id: "a2-d5", label: "<strong>“Ingress 能支持 TCP/UDP 吗？”：</strong> 原生 Ingress 只支持 HTTP/HTTPS。TCP/UDP 需要用 nginx-ingress 的 --tcp-services-configmap 或 Service 类型为 LoadBalancer。" }
+                                    { id: "a2-d3", label: "<strong>Ingress Controller 的高可用：</strong> 部署多个副本，并使用 PodAntiAffinity 分散到不同节点，或使用云 LB 作为前端。" }
                                 ]
                             }
                         ]
